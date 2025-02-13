@@ -9,9 +9,12 @@ export class Typeahead {
     this.inputSelector = selector;
   }
 
-  async fill(fieldLabel: string, searchedValue: string, enumValueText: string) {
-    await this.page.getByLabel(fieldLabel).click();
-    await this.page.getByPlaceholder("Search...").fill(searchedValue);
+  async fill(enumValueText: string) {
+    await this.page.getByLabel(this.inputSelector).click();
+    await this.page.getByPlaceholder("Search...").fill(enumValueText);
     await this.page.getByText(enumValueText).click();
+    await expect(this.page.getByLabel(this.inputSelector)).toHaveValue(
+      enumValueText
+    );
   }
 }

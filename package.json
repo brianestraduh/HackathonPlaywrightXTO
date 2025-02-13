@@ -2,17 +2,24 @@
   "name": "playwright",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:dev": "cross-env ENV_FILE=.env.dev npx playwright test",
+    "test:qa": "cross-env ENV_FILE=.env.qa npx playwright test",
+    "test:dev:trace": "cross-env ENV_FILE=.env.dev npx playwright test --trace on",
+    "test:qa:trace": "cross-env ENV_FILE=.env.qa npx playwright test --trace on"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.48.1",
-    "@types/node": "^22.7.7"
+    "@types/node": "^22.7.7",
+    "cross-env": "^7.0.3"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "playwright": "^1.50.1"
   }
 }

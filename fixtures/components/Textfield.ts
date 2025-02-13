@@ -10,7 +10,10 @@ export class Textfield {
   }
 
   async fill(value: string) {
-    const inputSelector = `${this.selector}`;
-    await this.page.fill(inputSelector, value);
+    console.log(this.selector);
+    await this.page.getByLabel(this.selector, { exact: true }).fill(value);
+    await expect(
+      this.page.getByLabel(this.selector, { exact: true })
+    ).toHaveValue(value);
   }
 }
